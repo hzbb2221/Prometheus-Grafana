@@ -1,8 +1,8 @@
 - targets:
-  - https://www.baidu.com
+  - https://www.163.com/
   labels:
     module: 测试类型
-    company: 百度（中国）有限公司
+    company: 广州网易计算机系统有限公司
     project: 测试项目
     env: 测试环境
-    name: 百度一下
+    name: 网易

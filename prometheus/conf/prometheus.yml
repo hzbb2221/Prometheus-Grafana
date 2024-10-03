@@ -18,7 +18,7 @@ rule_files:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  # Prometheus
   - job_name: 'prometheus'
     scrape_interval: 60s
     static_configs:
@@ -26,15 +26,22 @@ scrape_configs:
       - 'localhost:9090'
       labels:
         hostname: Prometheus-Server
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
+  # Alertmanager
+  - job_name: 'alertmanager'
+    scrape_interval: 60s
+    static_configs:
+    - targets:
+      - 'alertmanager:9093'
+      labels:
+        hostname: Alertmanager
+  # Pushgateway
   - job_name: 'pushgateway'
     scrape_interval: 60s
     honor_labels: true
     static_configs:
     - targets:
       - 'pushgateway:9091'
-
+  # Blackbox_exporter
   - job_name: 'blackbox_exporter'
     scrape_interval: 60s
     metrics_path: /probe
